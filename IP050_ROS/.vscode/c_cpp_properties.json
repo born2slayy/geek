@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jusang/geekble_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/jusang/geekble_ws/src/IP050_ROS/ip050_core/include/**",
+        "/home/jusang/geekble_ws/src/IP050_ROS/ip050_motor_driver/include/**",
+        "/home/jusang/geekble_ws/src/Lakibeam1-ROS1/lakibeam1_ros_v1_0_0/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

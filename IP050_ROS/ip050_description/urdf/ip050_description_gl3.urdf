@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<robot name="ip050">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="-0.2 0 0.04"/>
+      <geometry>
+        <box size="0.4 0.45 0.15"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Base Footprint -->
+  <link name="base_footprint"/>
+
+  <joint name="base_to_base_footprint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Imu -->
+  <link name="imu_link"/>
+
+  <joint name="imu_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Wheels -->
+  <link name="front_right_wheel">
+    <visual>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.065" length="0.03"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1.0 1.0 0 0.8"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="front_left_wheel">
+    <visual>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.065" length="0.03"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1.0 1.0 0 0.8"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="rear_right_caster">
+    <visual>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.065" length="0.02"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 0.8"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="rear_left_caster">
+    <visual>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.065" length="0.02"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 0.8"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Lidars -->
+  <link name="base_scan"/>
+
+  <link name="front_lidar">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.06"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="rear_lidar">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.06"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joints for wheels -->
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="0 -0.23 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0 0.23 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+
+  <joint name="rear_right_caster_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_caster"/>
+    <origin xyz="-0.4 -0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+
+  <joint name="rear_left_caster_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_caster"/>
+    <origin xyz="-0.4 0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+
+  <!-- Joints for lidars -->
+  <joint name="front_lidar_joint" type="fixed">
+    <parent link="base_scan"/>
+    <child link="front_lidar"/>
+    <origin xyz="0.12 0 0.04" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="rear_lidar_joint" type="fixed">
+    <parent link="base_scan"/>
+    <child link="rear_lidar"/>
+    <origin xyz="-0.52 0 0.04" rpy="0 0 3.14159"/>
+  </joint>
+
+  <joint name="base_to_base_scan" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_scan"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

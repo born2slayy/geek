@@ -1,0 +1,20 @@
+<launch>
+	<!-- SocketCAN -->
+	<include file="$(find ip050_motor_driver)/launch/socketcan_bridge.launch"/>
+	
+	<!-- Motor Driver -->
+	<node name="ip050_motor_driver" pkg="ip050_motor_driver" type="ip050_motor_driver" />
+
+	<!-- Robot Driver -->
+	<include file="$(find ip050_core)/launch/ip050_driver.launch">
+		<arg name="broadcast_tf" value="true"/>
+	</include>
+
+	<!-- URDF -->
+	<param name="robot_description" command="$(find xacro)/xacro '$(find ip050_description)/urdf/ip050_description_gl3.urdf'" />
+
+	<!-- send fake joint values -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	
+</launch>
